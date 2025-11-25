@@ -1,4 +1,4 @@
-# pytorch-diffusion
+# stable-diffusion
 
 基于mnist手写数字数据集的stable diffusion模型复现
 
