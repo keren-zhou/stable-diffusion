@@ -47,7 +47,7 @@ if __name__=='__main__':
     # 加载模型
     model=torch.load('model.pt')
 
-    USE_LORA=True
+    USE_LORA=False
 
     if USE_LORA:
         # 向nn.Linear层注入Lora
@@ -86,7 +86,7 @@ if __name__=='__main__':
 
     # 生成噪音图
     batch_size=10
-    batch_x_t=torch.randn(size=(batch_size,1,IMG_SIZE,IMG_SIZE))  # (5,1,48,48)
+    batch_x_t=torch.randn(size=(batch_size,1,IMG_SIZE,IMG_SIZE))  # (10,1,48,48)
     batch_cls=torch.arange(start=0,end=10,dtype=torch.long)   # 引导词promot
     # 逐步去噪得到原图
     steps=backward_denoise(model,batch_x_t,batch_cls)
@@ -103,4 +103,6 @@ if __name__=='__main__':
             final_img=tensor_to_pil(final_img)
             plt.subplot(batch_size,num_imgs,b*num_imgs+i+1)
             plt.imshow(final_img)
-    plt.show()
+    # plt.show()
+    plt.savefig('output_grid.png', bbox_inches='tight')
+    plt.close()

@@ -78,6 +78,7 @@ if __name__=='__main__':
     print('batch_x_t:',batch_x_t.size())
     print('batch_noise_t:',batch_noise_t.size())
 
-    unet=UNet(img_channel=1).to(DEVICE)
+    # unet=UNet(img_channel=1).to(DEVICE)
+    unet=UNet(batch_x_t.size(1)).to(DEVICE)
     batch_predict_noise_t=unet(batch_x_t,batch_t,batch_cls)
     print('batch_predict_noise_t:',batch_predict_noise_t.size())

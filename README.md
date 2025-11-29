@@ -8,12 +8,18 @@
 
 引导生成10张图片，分别对应数字0~9
 
-![模型效果](stable-inference.png)
+![模型效果](output_grid.png)
 
 ## 训练主模型
 
 ```
 python train.py
+```
+
+## 推理
+
+```
+python denoise.py
 ```
 
 ## Lora微调
